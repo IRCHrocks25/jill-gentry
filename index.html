@@ -205,6 +205,39 @@ h3{font-size:clamp(1.35rem, 3vw, 1.75rem);}
 .ledger-row .read{font-size:16px; color:var(--on-olive-mute); line-height:1.55; max-width:52ch;}
 .ledger-row .read b{color:var(--on-olive); font-weight:600;}
 .ledger-row .src{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--on-olive-faint); align-self:end;}
+.ledger-row .read--stack{display:flex; flex-direction:column; gap:10px;}
+.ledger-row .read--stack .lead{color:var(--on-olive); font-weight:600;}
+.ledger-row .read--stack .close{font-style:italic; color:var(--tan-soft);}
+.cred-sub{margin-top:14px; font-family:var(--serif); font-style:italic; font-size:clamp(1.1rem,2.3vw,1.35rem); color:var(--warm-gray); line-height:1.4; max-width:44ch;}
+
+/* ============================================================
+   DESIGN-TEAM REVISIONS (client feedback 2026-09-02)
+   — shift toward business/technology, add niche context strip
+   ============================================================ */
+
+/* hero tech-forward punch: subtle operator-badge row */
+.hero-badges{margin-top:32px; display:flex; flex-wrap:wrap; gap:10px; max-width:60ch;}
+.hero-badges .badge{display:inline-flex; align-items:center; gap:9px; padding:9px 14px; border:1px solid rgba(255,255,255,.28); border-radius:999px; background:rgba(255,255,255,.06); backdrop-filter:blur(6px); font-size:12.5px; letter-spacing:.06em; color:#FFFFFF; font-weight:500;}
+.hero-badges .badge .dot{width:6px; height:6px; border-radius:50%; background:var(--tan); flex-shrink:0;}
+.hero-badges .badge svg{width:15px; height:15px; opacity:.9;}
+
+/* niche-context strip: "day in the life" for IL / AL / MC */
+.section--niche{background:var(--sand); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.niche-head{text-align:center; margin-bottom:clamp(2rem,4vw,2.8rem);}
+.niche-head .eyebrow{justify-content:center; margin-inline:auto;}
+.niche-head h2{margin-top:16px; font-family:var(--serif); font-size:clamp(1.7rem,3.6vw,2.4rem); color:var(--olive); line-height:1.15; letter-spacing:-.008em; max-width:34ch; margin-inline:auto;}
+.niche-grid{display:grid; grid-template-columns:1fr; gap:22px;}
+.niche-tile{position:relative; overflow:hidden; border-radius:var(--radius-sm); background:linear-gradient(150deg,var(--sand),var(--sand-deep)); aspect-ratio:4/3;}
+.niche-tile img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease;}
+.niche-tile:hover img{transform:scale(1.03);}
+.niche-tile::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(38,42,34,0) 42%, rgba(38,42,34,.72) 100%); pointer-events:none;}
+.niche-tile .cap{position:absolute; left:16px; right:16px; bottom:16px; z-index:1;}
+.niche-tile .cap .kicker{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--tan); display:block; margin-bottom:6px;}
+.niche-tile .cap .name{font-family:var(--serif); font-size:clamp(1.15rem,2.2vw,1.4rem); color:#FFFFFF; line-height:1.15;}
+.niche-foot{margin-top:clamp(2rem,4vw,2.6rem); text-align:center; font-size:14.5px; color:var(--warm-gray); max-width:60ch; margin-inline:auto;}
+@media (min-width:760px){ .niche-grid{grid-template-columns:repeat(3,1fr); gap:22px;} }
+@media (min-width:1024px){ .niche-grid{gap:28px;} }
+
 .num-cta{margin-top:36px;}
 @media (min-width:760px){
   .ledger-row{grid-template-columns:minmax(140px,1.1fr) minmax(0,3fr) minmax(120px,1fr); align-items:baseline; gap:32px;}
@@ -578,7 +611,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
 #path::before{content:''; position:absolute; inset:0; z-index:-1; background:url('https://dashboard.katalyst-crm.com/files/t1/4a9722b1b1e7648c7aba86823681ed91_LE_upscale_gentle.jpg') center/cover no-repeat; opacity:.12;}
 
 /* boutique: shift bg image down so the person is visible */
-.boutique-bgimg img{width:100%; height:100%; object-fit:cover; object-position:center 75%; display:block;}
+.boutique-bgimg img{width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block;}
 .boutique-bgimg::after{content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(28,31,24,.62) 0%, rgba(28,31,24,.42) 55%, rgba(28,31,24,.24) 100%);}
 .boutique-inner{position:relative; z-index:1; max-width:820px; margin-inline:0; text-align:left; padding-block:clamp(1.5rem,4vw,3rem);}
 .boutique-mark{display:none;}
@@ -662,7 +695,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
       <img class="nav-logo" src="https://dashboard.katalyst-crm.com/files/t1/ChatGPT%20Image%20Aug%2028,%202026,%2011_57_43%20AM.png" alt="Jill Gentry & Co.">
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#method">The Method</a>
+      <a href="#path">The Method</a>
       <a href="#path">The Path</a>
       <a href="#numbers">The Numbers</a>
       <a href="#offer">The Offer</a>
@@ -675,7 +708,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
 
 <div class="menu-overlay" id="menuOverlay"></div>
 <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
-  <a href="#method" class="m-link">The Method</a>
+  <a href="#path" class="m-link">The Method</a>
   <a href="#path" class="m-link">The Path</a>
   <a href="#numbers" class="m-link">The Numbers</a>
   <a href="#offer" class="m-link">The Offer</a>
@@ -689,23 +722,63 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
   <!-- ==================== 01 · HERO (full-width) ==================== -->
   <section class="hero-full" id="hero">
     <div class="hero-bg" aria-hidden="true">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260827_191105_057451aa-7465-4eb5-ac34-8338058c892a.png" alt="" fetchpriority="high" decoding="async">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260918_113752_b1661854-5a05-4618-b212-125c4b4b9b39.png" alt="" fetchpriority="high" decoding="async">
     </div>
     <div class="wrap hero-full-inner">
       <div class="hero-eyebrow reveal"><p class="eyebrow">For Senior Living Operators</p></div>
       <h1 class="reveal">Stop chasing leads. Start recovering <em>move-ins.</em></h1>
-      <p class="hero-body reveal">Most communities don't lose move-ins to a competitor. They lose them to silence.</p>
+      <p class="hero-body reveal">Most communities don't lose move-ins to a competitor. Often, it starts with silence.</p>
       <div class="hero-diag reveal">
         <p>The inquiry answered three days late.</p>
         <p>The tour that ended warm and never got a call back.</p>
-        <p>The family who went quiet at month three of an eight-month decision.</p>
+        <p>The family who went quiet at month three.</p>
       </div>
       <p class="hero-finds reveal">The Move-In Method finds where yours are slipping out, then builds the system that holds them.</p>
-      <p class="hero-meta reveal">Fifteen questions. A score out of 45. The stage costing you the most move-ins. No cost, no call.</p>
+      <p class="hero-meta reveal">Fifteen questions. A percentage score. The stage costing you the most move-ins. No cost, no call.</p>
       <div class="btn-row hero-btns reveal">
         <button class="btn btn--clay" data-scorecard>Take the Scorecard</button>
-        <a href="#method" class="btn btn--ghost">Explore the Method</a>
+        <a href="#path" class="btn btn--ghost">Explore the Method</a>
       </div>
+      <div class="hero-badges reveal" aria-label="System capabilities">
+        <span class="badge"><span class="dot"></span>CRM-integrated</span>
+        <span class="badge"><span class="dot"></span>Workflow-designed</span>
+        <span class="badge"><span class="dot"></span>Automation-ready</span>
+        <span class="badge"><span class="dot"></span>AI-aware</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 01B · NICHE CONTEXT STRIP (day in the life) ==================== -->
+  <section class="section section--niche">
+    <div class="wrap">
+      <div class="niche-head reveal">
+        <p class="eyebrow">Built for the operators of</p>
+        <h2>Independent living, assisted living, and memory care.</h2>
+      </div>
+      <div class="niche-grid">
+        <div class="niche-tile reveal">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260918_113755_d6966ea1-2a15-4caa-a251-277f4452acb1.png" alt="A bright, elegantly appointed independent living common area at morning hour" loading="lazy" decoding="async">
+          <div class="cap">
+            <span class="kicker">Independent Living</span>
+            <span class="name">Where hospitality operations meet a longer decision.</span>
+          </div>
+        </div>
+        <div class="niche-tile reveal">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260918_113754_52dfbe51-c221-4ea8-b742-d63126a03700.png" alt="A community sales director reviewing an occupancy report and pipeline dashboard at a modern advisory desk" loading="lazy" decoding="async">
+          <div class="cap">
+            <span class="kicker">Assisted Living</span>
+            <span class="name">Where response time and follow-up cadence decide the census.</span>
+          </div>
+        </div>
+        <div class="niche-tile reveal">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260918_113752_8bad8896-73aa-4632-96db-8ef743debc7c.png" alt="A softly lit modern senior-living wing corridor with warm architectural detail" loading="lazy" decoding="async">
+          <div class="cap">
+            <span class="kicker">Memory Care</span>
+            <span class="name">Where readiness windows are shorter and the process has to hold.</span>
+          </div>
+        </div>
+      </div>
+      <p class="niche-foot reveal">The Move-In Method is designed for the operators of these communities &mdash; not the residents. Built around your CRM, your team, your census.</p>
     </div>
   </section>
 
@@ -719,6 +792,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
         <div class="split">
           <div class="split-text">
             <h2 class="cred-lede reveal">Built in the sales office, not above it.</h2>
+            <p class="cred-sub reveal">A decade carrying the census number, before a single word of advice.</p>
             <div class="cred-list reveal">
               <div class="cred-item"><span class="n">01</span><p>Ten-plus years in the senior living sales seat: the quota, the tours, the pipeline, the follow-up calls.</p></div>
               <div class="cred-item"><span class="n">02</span><p>Two ground-up community openings, including the first senior living cooperative in Texas.</p></div>
@@ -750,7 +824,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
         <div class="split">
           <div class="split-text">
             <h2 class="prob-lede reveal">When census slips, the answer is always the same. More activity.</h2>
-            <p class="prob-sub reveal">More calls. More referral visits. More pressure on a team already at the edge of what a person can hold.</p>
+            <p class="prob-sub reveal">More calls. More referral visits. More pressure on a team already at the edge of what a person can hold. And the move-ins keep leaving from the same five places.</p>
             <div class="leaks reveal">
               <div class="leak"><span class="mk"></span><p>An inquiry comes in Saturday afternoon. Someone calls back Monday.</p></div>
               <div class="leak"><span class="mk"></span><p>A tour goes well. Everyone leaves warm. Nothing goes out that week.</p></div>
@@ -800,7 +874,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
     <div class="numbers-bgimg" aria-hidden="true"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260827_191105_613cd00a-5985-4a1f-ae08-2016aa4041c9.png" alt="" loading="lazy" decoding="async"></div>
     <div class="wrap ed">
       <div class="ed-rail reveal">
-        <p class="eyebrow"><span class="idx">05</span> The Occupancy Math</p>
+        <p class="eyebrow">The Occupancy Math</p>
         <p class="rail-note">Four numbers that say the same thing.</p>
       </div>
       <div class="ed-main">
@@ -812,19 +886,27 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
             <p class="src">NIC MAP · Q1 2026</p>
           </div>
           <div class="ledger-row">
-            <div class="big">8 in 10</div>
-            <p class="read">online inquiries never get a response. Nine in ten hear nothing within a day. <b>Do you know what your community's number is?</b></p>
+            <div class="big">Many</div>
+            <div class="read read--stack">
+              <span class="lead">Many inquiries never get a response.</span>
+              <span>Industry inquiry studies consistently show that many online senior living inquiries receive delayed or no response.</span>
+              <span class="close">Do you know what your community's number is?</span>
+            </div>
             <p class="src">Industry inquiry studies</p>
           </div>
           <div class="ledger-row">
             <div class="big">31%</div>
-            <p class="read">of tours now convert to move-ins, down from 34% a year ago. <b>Most move-ins leak at one specific stage — and yours is findable.</b></p>
+            <p class="read">of tours now convert to move-ins, down from 34% a year ago. <b>Most move-ins leak at one specific stage. Most operators can't name theirs. Yours is findable.</b></p>
             <p class="src">Aline benchmark data</p>
           </div>
           <div class="ledger-row">
-            <div class="big">$130K+</div>
-            <p class="read">One saved move-in is worth $130,000 or more. <b>Recover a single family you were about to lose, and the work has already paid for itself.</b></p>
-            <p class="src">Median AL rate × avg length of stay</p>
+            <div class="big">$4&ndash;6K<span style="font-size:.5em; letter-spacing:.05em;">/MO</span></div>
+            <div class="read read--stack">
+              <span class="lead">One recovered move-in can change the math.</span>
+              <span>At $4,000&ndash;$6,000 per month, a single saved move-in can repay the Assessment and, in many cases, the full Design engagement. Over the full length of stay, the value of one retained resident can be significantly higher.</span>
+              <span class="close">That is why small process leaks are not small business problems.</span>
+            </div>
+            <span class="src" aria-hidden="true"></span>
           </div>
         </div>
         <div class="num-cta reveal"><button class="btn btn--clay" data-scorecard>Find out what yours is</button></div>
@@ -887,7 +969,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
               <p class="retreat-tier">Founding rate &middot; first seven communities</p>
               <h3>The Move-In Method Assessment</h3>
               <p class="retreat-sub"><s>$5,000</s> &nbsp;$2,500 &middot; credits toward Design</p>
-              <p class="retreat-desc">An expert-led field examination of all five stages: response speed, follow-up cadence, decision-window handling, CRM visibility, stalled leads, and drop-off points. Automation and AI opportunities are flagged where a system could keep families warm through a months-long decision. The fee credits toward Design if you proceed within 60 days.</p>
+              <p class="retreat-desc">An expert-led field examination of all five stages: response speed, follow-up cadence, decision-window handling, CRM visibility, stalled leads, and drop-off points. Automation and AI opportunities are flagged where a system could keep families warm through a months-long decision &mdash; the work that's easy to defer and expensive to drop. The fee credits toward Design if you proceed within 60 days.</p>
               <div class="retreat-cta"><a href="#" class="tlink" data-cta="assessment">Book the Assessment</a></div>
             </div>
           </div>
@@ -912,80 +994,16 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
               <span class="retreat-step">Tier Four</span>
             </div>
             <div class="retreat-body">
-              <p class="retreat-tier">Installed &middot; operational &middot; held</p>
+              <p class="retreat-tier">Optional &middot; a separate next step</p>
               <h3>The Move-In Method Build</h3>
-              <p class="retreat-sub">From $7,500 &middot; under Jill's direct oversight</p>
-              <p class="retreat-desc">The designed system installed and made operational, with gaps closed through automation and AI where they fit. A vetted implementor who already knows your blueprint executes under Jill's direct oversight, with kickoff, midpoint, pre-launch sign-off, and a 30-day post-launch checkpoint. You work with Jill throughout. She just doesn't sit at the keyboard.</p>
+              <p class="retreat-sub">From $7,500 &middot; scoped from your Design blueprint</p>
+              <p class="retreat-desc">If your team wants implementation support after the blueprint is complete, Build is available as a separate next step. It's the designed system installed and made operational, with gaps closed through automation and AI where they fit. A vetted implementor who already knows your blueprint executes under Jill's direct oversight, with kickoff, midpoint, pre-launch sign-off, and a 30-day post-launch checkpoint. You work with Jill throughout. She just doesn't sit at the keyboard.</p>
               <div class="retreat-cta"><a href="#" class="tlink" data-cta="build">Talk about a Build</a></div>
             </div>
           </div>
 
         </div>
         <div class="offer-foot reveal"><button class="btn btn--olive" data-scorecard>Start with the Scorecard</button></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 08 · METHOD ==================== -->
-  <section class="section" id="method">
-    <div class="wrap ed">
-      <div class="ed-rail reveal">
-        <p class="eyebrow">The Move-In Method</p>
-        <p class="rail-note">Three phases, applied across the five stages a family moves through.</p>
-      </div>
-      <div class="ed-main">
-        <h2 class="method-lede reveal">Survey. Design. Build.</h2>
-        <div class="workshops reveal">
-          <div class="wk">
-            <div class="wk-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260827_191106_a32dade3-6622-4e39-9b2d-37a1ab1bacb6.png" alt="Hands spreading printed pages and handwritten notes across a warm table, one page coming into focus" loading="lazy" decoding="async"></div>
-            <div class="wk-title"><h3>Survey</h3><span class="wk-arrow" aria-hidden="true">&rarr;</span></div>
-            <p class="wk-meta">Phase 01 &middot; Discovery</p>
-            <p class="wk-desc">You can't improve what you can't see. We map your current move-in path — how families are logged and tracked, response times, follow-up patterns, and where they slow down, stall, or slip away. The findings come from your numbers, not a generic playbook.</p>
-          </div>
-          <div class="wk">
-            <div class="wk-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260827_191105_e6f0aada-6d29-40ae-ae92-013cb6723458.png" alt="Hands sketching a simple workflow on paper at a warm wooden table" loading="lazy" decoding="async"></div>
-            <div class="wk-title"><h3>Design</h3><span class="wk-arrow" aria-hidden="true">&rarr;</span></div>
-            <p class="wk-meta">Phase 02 &middot; Craft</p>
-            <p class="wk-desc">The system carries what no person can hold. We turn the findings into a practical move-in system — response standards, follow-up sequences that stay present through a longer decision, cleaner handoffs, and accountability rhythms — built around the CRM you already run. Includes the AI Readiness Session.</p>
-          </div>
-          <div class="wk">
-            <div class="wk-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_35NBuSfIPglHIOMZxxqoxDRFcyj/hf_20260827_191105_e8bb4e2d-5f19-4014-a27e-77fb0e3fcb83.png" alt="A welcoming doorway into a sunlit, well-built senior living sitting room" loading="lazy" decoding="async"></div>
-            <div class="wk-title"><h3>Build</h3><span class="wk-arrow" aria-hidden="true">&rarr;</span></div>
-            <p class="wk-meta">Phase 03 &middot; Durability</p>
-            <p class="wk-desc">Systems over heroics. The designed system is put into practice and embedded into how your team works, so it holds through turnover, busy weeks, and competing priorities. A 30-day post-launch checkpoint confirms it's holding. Move-ins stop depending on whether one person remembered to call back.</p>
-          </div>
-        </div>
-        <div class="workshops-cta reveal"><a href="#offer" class="tlink">See the four steps</a></div>
-
-        <div class="spine-ref reveal">
-          <div class="sr-head">
-            <span class="sr-title">One spine, three ways</span>
-            <span class="sr-sub">the method, the visual threads, the theme</span>
-          </div>
-          <div class="sr-grid">
-            <div class="sr-col">
-              <p class="c-lbl">The Method</p>
-              <div class="c-row"><span class="rn">1</span>Survey</div>
-              <div class="c-row"><span class="rn">2</span>Design</div>
-              <div class="c-row"><span class="rn">3</span>Build</div>
-            </div>
-            <div class="sr-col">
-              <p class="c-lbl">The Threads</p>
-              <div class="c-row"><span class="rn">1</span>Discovery</div>
-              <div class="c-row"><span class="rn">2</span>Craft</div>
-              <div class="c-row"><span class="rn">3</span>Durability</div>
-            </div>
-            <div class="sr-col">
-              <p class="c-lbl">The Theme</p>
-              <div class="c-row"><span class="rn">1</span>Uncover</div>
-              <div class="c-row"><span class="rn">2</span>Shape</div>
-              <div class="c-row"><span class="rn">3</span>Strengthen</div>
-            </div>
-          </div>
-          <p class="sr-foot">From hidden to clear, from scattered to shaped, from temporary effort to lasting rhythm.</p>
-        </div>
-
-        <div class="method-cta reveal"><a href="#path" class="tlink">See where your pipeline goes quiet</a></div>
       </div>
     </div>
   </section>
@@ -1119,7 +1137,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
           <p class="guidance-kicker">Founding Cohort</p>
           <p class="guidance-sub">The founding cohort is forming now &mdash; and it's shaped by the first seven.</p>
           <div class="guidance-body">
-            <p>The first seven communities receive the founding rate and help shape the method as it's built.</p>
+            <p>The first seven communities receive the founding rate and shape the method as it is built. A small founding group means Jill can work closely with each community and adjust the method to what she's actually seeing, not roll it out untested.</p>
             <p>The Move-In Method Scorecard reviews your move-in path across all five stages and shows where families may be slowing down, stalling, or slipping away. <strong>Fifteen questions, a percentage result, and a clearer view you can take into your next census meeting.</strong></p>
             <p>No download, no call, no sales conversation. Answer as the role you actually hold &mdash; community sales director, executive director, or owner/operator.</p>
           </div>
@@ -1177,7 +1195,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--clay); outline-of
       <div>
         <p class="footer-colhead">Explore</p>
         <nav class="footer-nav" aria-label="Footer">
-          <a href="#method">The Method</a>
+          <a href="#path">The Method</a>
           <a href="#path">The Path</a>
           <a href="#numbers">The Numbers</a>
           <a href="#offer">The Offer</a>
